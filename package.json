@@ -8,5 +8,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "serverless-offline": "^6.1.4",
+    "serverless-s3-local": "^0.5.4"
+  }
 }
