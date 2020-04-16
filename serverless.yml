@@ -20,6 +20,7 @@ functions:
           path: users
 
 plugins:
+  - serverless-dotenv-plugin
   - serverless-s3-local
   - serverless-dynamodb-local
   - serverless-offline # Needs to be the last one
@@ -39,7 +40,7 @@ custom:
     seed:
       domain:
         sources:
-          - table: UsersTable
+          - table: ${env:DYNAMODB_TABLE}
             sources: [./seeds/users-table.json]
 
 resources:
@@ -51,7 +52,7 @@ resources:
     DynamoDbTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: UsersTable
+        TableName: ${env:DYNAMODB_TABLE}
         AttributeDefinitions:
           - AttributeName: email
             AttributeType: S

@@ -2,12 +2,14 @@
 
 const AWS = require("aws-sdk");
 
-AWS.config.update({
-  region: "local",
-  endpoint: "http://localhost:9000",
-  accessKeyId: "S3RVER",
-  secretAccessKey: "S3RVER",
-});
+if (process.env.IS_OFFLINE) {
+  AWS.config.update({
+    region: "local",
+    endpoint: "http://localhost:9000",
+    accessKeyId: "S3RVER",
+    secretAccessKey: "S3RVER",
+  });
+}
 const docClient = new AWS.DynamoDB.DocumentClient();
 
 const response = {
