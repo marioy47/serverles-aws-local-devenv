@@ -1,0 +1,12 @@
+[
+  {
+    "email": "my-custom-email@gmail.com",
+    "names": "Mario Yepes",
+    "nationality": "Colombian"
+  },
+  {
+    "email": "another-email@gmail.com",
+    "names": "Consuelo Cifuentes",
+    "nationality": "Colombian"
+  }
+]

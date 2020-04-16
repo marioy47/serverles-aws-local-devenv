@@ -14,13 +14,27 @@ functions:
           path: hello/{name}
 
 plugins:
-  - serverless-s3-local # needs to be before serverless-offline
-  - serverless-offline
+  - serverless-s3-local
+  - serverless-dynamodb-local
+  - serverless-offline # Needs to be the last one
 
 custom:
   s3:
     port: 8000
     directory: ./dist/
+  dynamodb:
+    stages:
+      - dev
+    start:
+      port: 9000
+      inMemory: true
+      migrate: true
+      seed: true
+    seed:
+      domain:
+        sources:
+          - table: UsersTable
+            sources: [./seeds/users-table.json]
 
 resources:
   Resources:
@@ -28,3 +42,14 @@ resources:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: local-bucket
+    DynamoDbTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: UsersTable
+        AttributeDefinitions:
+          - AttributeName: email
+            AttributeType: S
+        KeySchema:
+          - AttributeName: email
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
