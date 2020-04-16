@@ -12,6 +12,12 @@ functions:
       - http: # Double indent the next line!
           method: get
           path: hello/{name}
+  users:
+    handler: lambdas/users.index
+    events:
+      - http:
+          method: get
+          path: users
 
 plugins:
   - serverless-s3-local
