@@ -12,7 +12,7 @@
   "devDependencies": {
     "aws-sdk": "^2.656.0",
     "serverless-dotenv-plugin": "^2.3.2",
-    "serverless-dynamodb-local": "^0.2.39",
+    "serverless-dynamodb-local": "^1.0.2",
     "serverless-offline": "^6.1.4",
     "serverless-s3-local": "^0.5.4"
   }
